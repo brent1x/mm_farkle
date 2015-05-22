@@ -1,14 +1,11 @@
-//
-//  ViewController.m
-//  Farkle
-//
-//  Created by Brent Dady on 5/21/15.
-//  Copyright (c) 2015 Brent Dady. All rights reserved.
-//
+
 
 #import "ViewController.h"
 
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *dieLabel;
+@property CGPoint dieLabelStartingPoint;
+
 
 @end
 
@@ -16,12 +13,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    self.dieLabelStartingPoint = self.dieLabel.center;
+
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)didPan:(UIPanGestureRecognizer *)sender {
+
+    CGPoint point = [sender locationInView:self.view];
+    self.dieLabel.center = point;
+
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+
+    UIGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didPan:)];
+    return self;
 }
 
 @end

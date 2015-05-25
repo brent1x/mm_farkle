@@ -1,15 +1,11 @@
 
-
 #import "DieLabel.h"
 
 @implementation DieLabel
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (void)roll {
+    int random = arc4random_uniform(6) + 1;
+    self.text = [NSString stringWithFormat:@"%i", random];
 }
-*/
 
 @end

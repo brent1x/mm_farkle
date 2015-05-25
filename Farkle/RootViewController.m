@@ -3,12 +3,13 @@
 
 @interface RootViewController ()
 
-@property (weak, nonatomic) IBOutlet UILabel *dieLabelOne;
-@property (weak, nonatomic) IBOutlet UILabel *dieLabelTwo;
-@property (weak, nonatomic) IBOutlet UILabel *dieLabelThree;
-@property (weak, nonatomic) IBOutlet UILabel *dieLabelFour;
-@property (weak, nonatomic) IBOutlet UILabel *dieLabelFive;
-@property (weak, nonatomic) IBOutlet UILabel *dieLabelSix;
+@property (weak, nonatomic) IBOutlet DieLabel *dieLabelOne;
+@property (weak, nonatomic) IBOutlet DieLabel *dieLabelTwo;
+@property (weak, nonatomic) IBOutlet DieLabel *dieLabelThree;
+@property (weak, nonatomic) IBOutlet DieLabel *dieLabelFour;
+@property (weak, nonatomic) IBOutlet DieLabel *dieLabelFive;
+@property (weak, nonatomic) IBOutlet DieLabel *dieLabelSix;
+
 @property NSMutableArray *diceArray;
 
 @end
@@ -20,13 +21,8 @@
     self.diceArray = [NSMutableArray arrayWithObjects:self.dieLabelOne, self.dieLabelTwo, self.dieLabelThree, self.dieLabelFour, self.dieLabelFive, self.dieLabelSix, nil];
 }
 
-- (IBAction)test:(id)sender {
-    NSLog(@"tapped");
-}
 
 - (IBAction)onRollButtonPressed:(UIButton *)sender {
-    NSLog(@"also tapped");
-
     for (DieLabel *die in self.diceArray) {
         [die roll];
     }
